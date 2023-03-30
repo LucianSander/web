@@ -1,0 +1,36 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Lista de Pessoas';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('pessoa', ['action' => 'Adicionar']) ?>">Adicionar Nova Pessoa</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Código</th>
+    <th>Nome da Pessoa</th>
+    <th>Sobrenome da Pessoa</th>
+    <th>Email da Pessoa</th>
+    <th>Situação da Pessoa</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($pessoas as $pessoa) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($pessoa->id) ?></td>
+        <td><?= $this->escapeHtml($pessoa->nome) ?></td>
+        <td><?= $this->escapeHtml($pessoa->sobrenome) ?></td>
+        <td><?= $this->escapeHtml($pessoa->email) ?></td>
+        <td><?= $this->escapeHtml($pessoa->situacao) ?></td>
+
+
+        <td>
+            <a href="<?= $this->url('pessoa', ['action' => 'edit', 'id' => $pessoa->id]) ?>">Editar</a>
+            <a href="<?= $this->url('pessoa', ['action' => 'delete', 'id' => $pessoa->id]) ?>">Deletar</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
